@@ -1,18 +1,7 @@
 const express = require("express");
 const router = new express.Router();
+const shopController = require("../Controllers/shopController");
 
-router.get("/", (req, res) => {
-  const teacher = { name: "Whalen", subject: "Computer Science", tenure: true };
-  try {
-    res.json(teacher);
-  } catch (error) {
-    console.log(error);
-  }
-});
-router.get("/teacher/:name", (req, res) => {
-  try {
-    //request is object that has properties
-    res.json(req.params.name);
-  } catch (error) {}
-});
+router.get("/", shopController.authMiddleware, shopController.homePage);
+
 module.exports = router;
