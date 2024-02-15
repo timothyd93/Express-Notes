@@ -40,3 +40,15 @@ exports.updateShop = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.deleteShop = async (req, res) => {
+  try {
+    const shop = await Shop.findByIdAndDelete(req.params.id);
+   if(!shop) {
+    res.status(404).send();
+   }
+   res.send(`${shop} was deleted from the DB`);
+  } catch (error) {
+    console.log(error);
+  }
+};
