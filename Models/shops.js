@@ -24,4 +24,4 @@ shopSchema.pre(`save`, function (next) {
   next();
 });
 module.exports = mongoose.model("Shop", shopSchema);
-``;
+
